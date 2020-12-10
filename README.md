@@ -1,6 +1,9 @@
 ## About
 
 Simple responsive landing page with working menu button
+
+Features: 
+* multi-language feature make possible to switch between portuguese and english languages
 ## Run the app
 
 In the project directory, you can run:
