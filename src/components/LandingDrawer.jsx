@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
+import useLanguages from '../hooks/useLanguages';
 
 const useStyles = makeStyles((theme) => ({
     drawer: {
@@ -30,8 +31,9 @@ const useStyles = makeStyles((theme) => ({
 // eslint-disable-next-line react/prop-types
 function LandingDrawer({ drawerState, setDrawerState }) {
     const classes = useStyles();
+    const { language } = useLanguages();
 
-    const AppbarButtons = ["Learn", "About", "Articles"];
+    const AppbarButtons = [language.learn, language.about, language.articles];
 
     return (
         <Drawer

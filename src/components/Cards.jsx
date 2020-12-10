@@ -1,9 +1,10 @@
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Button, Card, CardActions, CardContent, CardMedia, Container, Grid, Typography } from '@material-ui/core';
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Image1 from '../assets/images/a1.jpg';
 import Image2 from '../assets/images/a2.jpg';
 import Image3 from '../assets/images/a3.jpg';
+import useLanguages from '../hooks/useLanguages';
 
 const useStyles = makeStyles((theme) => ({
     cardGrid: {
@@ -23,25 +24,27 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 function Cards() {
     const classes = useStyles();
+    const { language, switchLanguage } = useLanguages();
+
     const cards = [
         {
             image: Image1,
-            heading: "Seed",
-            content: "Have you ever heard the saying 'you reap what you sow' ?"
+            heading: language.seed,
+            content: language.seedDesc
         },
         {
             image: Image2,
-            heading: "Marathon",
-            content: "Life is a marathon. There are miles of lots of effort, wear, difficulty and endurance."
+            heading: language.marathon,
+            content: language.marathonDesc
         },
         {
             image: Image3,
-            heading: "Preparation",
-            content: "No pain, no gain."
-        },];
+            heading: language.preparation,
+            content: language.preparationDesc
+        },
+    ];
     return (
         <Container className={classes.cardGrid} maxWidth="md">
             <Grid container spacing={4}>
@@ -63,7 +66,7 @@ function Cards() {
                             </CardContent>
                             <CardActions>
                                 <Button size="small" color="secondary">
-                                    Learn more
+                                    {language.learnMore}
                                 </Button>
                             </CardActions>
                         </Card>

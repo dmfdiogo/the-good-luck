@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, Button, Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import useLanguages from '../hooks/useLanguages';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -16,23 +17,25 @@ const useStyles = makeStyles((theme) => ({
 function Content() {
     const classes = useStyles();
 
+    const { language } = useLanguages();
+
     return (
         <Box className={classes.content} >
             <Container maxWidth="md" >
                 <Typography component="h1" variant="h2" align="center" color="secondary" gutterBottom>
-                    The Good Luck
+                    {language.title}
                 </Typography>
                 <Typography variant="h5" align="justify" color="textSecondary" paragraph>
-                    With each passing year, the job market becomes more competitive. New specializations appear, new prerequisites to fill good vacancies, etc. But five, ten years ago, the scenario was of less intense competition, not least because professional qualifications were less demanding. A good curriculum with courses, postgraduate, MBA, exchanges and everything else that adds value to the professional is no longer enough in todays market. Not that technical skills are not important, but the market today seeks another type of skills: soft skills.
+                    {language.contentParagraph1}
                 </Typography>
                 <Typography variant="h5" align="justify" color="textSecondary" paragraph>
-                    Having this constant need for developinging your abilities, good jobs and opportunities ALWAYS show up, it is your duty to be prepared and able to ride the horse when it passes right in front of you. Just keep in mind the the difference between luck and the good luck is not something to rule out.
+                    {language.contentParagraph2}
                 </Typography>
                 <Box className={classes.heroButtons}>
                     <Grid container spacing={2} justify="center">
                         <Grid item>
                             <Button variant="contained" color="secondary" >
-                                Keep reading
+                                {language.keepReading}
                             </Button>
                         </Grid>
                     </Grid>

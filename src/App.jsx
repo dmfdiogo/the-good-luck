@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from "@material-ui/core/styles/";
 import theme from './Theme';
-import LandingPage from './pages/LandingPage'
+import { LanguageProvider } from './context/LanguageContext';
+import languages from './Languages';
+import LandingPage from './pages/LandingPage';
+
 
 function App() {
+
     return (
         <>
             <CssBaseline />
             <ThemeProvider theme={theme}>
-                <LandingPage />
+                <LanguageProvider language={languages.enUs}>
+                    <LandingPage />
+                </LanguageProvider>
             </ThemeProvider>
         </>
     );

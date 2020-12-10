@@ -45,6 +45,8 @@ export default function LandingPage() {
 
     const { language, switchLanguage } = useLanguages();
 
+    const [interpolation, setInterpolation] = useState(language.id === 'enUs' ? false : true);
+
     const [drawerState, setDrawerState] = useState(false);
     function handelOpenDrawer() {
         setDrawerState(!drawerState);
@@ -64,8 +66,23 @@ export default function LandingPage() {
                             <Button className={classes.button} variant="text">{language.about}</Button>
                             <Button className={classes.button} variant="text">{language.articles}</Button>
                             <ButtonGroup disableElevation variant="outlined" color="secondary">
-                                <Button onClick={() => switchLanguage(languages.ptBr)}>BR</Button>
-                                <Button onClick={() => switchLanguage(languages.enUs)}>EN</Button>
+                                <Button
+                                    variant={interpolation ? "contained" : "outlined"}
+                                    onClick={() => {
+                                        switchLanguage(languages.ptBr);
+                                        setInterpolation(!interpolation);
+                                    }}>
+                                    BR
+                                </Button>
+                                <Button
+                                    variant={!interpolation ? "contained" : "outlined"}
+                                    onClick={() => {
+                                        switchLanguage(languages.enUs);
+                                        setInterpolation(!interpolation);
+                                    }}
+                                >
+                                    EN
+                                </Button>
                             </ButtonGroup>
                         </Hidden>
                         <Hidden mdUp>

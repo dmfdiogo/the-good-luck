@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Typography, Button, Container, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import useLanguages from '../hooks/useLanguages';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -15,32 +16,33 @@ const useStyles = makeStyles((theme) => ({
 
 function Hero() {
     const classes = useStyles();
+    const { language } = useLanguages();
 
     return (
         <Box className={classes.heroContent} >
             <Container maxWidth="sm" >
                 <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                    The Good Luck
-            </Typography>
+                    {language.title}
+                </Typography>
                 <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                    Accomplish more with the GOOD LUCK by your side
-            </Typography>
+                    {language.slogan}
+                </Typography>
                 <Box className={classes.heroButtons}>
                     <Grid container spacing={2} justify="center">
                         <Grid item>
                             <Button variant="contained" color="secondary" >
-                                Learn more
+                                {language.learnMore}
                             </Button>
                         </Grid>
                         <Grid item>
                             <Button variant="outlined" color="secondary">
-                                Articles
-                        </Button>
+                                {language.articles}
+                            </Button>
                         </Grid>
                     </Grid>
                 </Box>
-            </Container >
-        </Box >
+            </Container>
+        </Box>
     );
 }
 
